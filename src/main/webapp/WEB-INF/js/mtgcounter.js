@@ -48,7 +48,7 @@ var appendPlayer = function(newPlayer) {
         players[newPlayer.id].removeHp($("#changeHP").val());
         updateHp();
     });
-
+    // This is SPARTA
     $("button.addHp" + newPlayer.id).click(function() {
         players[newPlayer.id].addHp($("#changeHP").val());
         updateHp();
