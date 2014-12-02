@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ad746ac4-f4a1-4892-becf-209ae77d8a3f" name="Default" comment="Laget brukermodell&#10;Laget controller og view for registrering">
+    <list default="true" id="ad746ac4-f4a1-4892-becf-209ae77d8a3f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MTGL.iws" />
@@ -863,7 +863,7 @@
       <workItem from="1417532014499" duration="637000" />
       <workItem from="1417543385185" duration="2053000" />
       <workItem from="1417556854922" duration="28000" />
-      <workItem from="1417557321068" duration="420000" />
+      <workItem from="1417557321068" duration="452000" />
     </task>
     <task id="LOCAL-00001" summary="Laget brukermodell&#10;Laget controller og view for registrering">
       <created>1417557729845</created>
@@ -871,11 +871,17 @@
       <option name="project" value="LOCAL" />
       <updated>1417557729845</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="bredde på livinput">
+      <created>1417557761037</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1417557761037</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4486000" />
+    <option name="totallyTimeSpent" value="4518000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="6" />
@@ -932,7 +938,8 @@
     </option>
     <MESSAGE value="mtgcounter css + html&#10;bootstrap + jquery" />
     <MESSAGE value="Laget brukermodell&#10;Laget controller og view for registrering" />
-    <option name="LAST_COMMIT_MESSAGE" value="Laget brukermodell&#10;Laget controller og view for registrering" />
+    <MESSAGE value="bredde på livinput" />
+    <option name="LAST_COMMIT_MESSAGE" value="bredde på livinput" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
