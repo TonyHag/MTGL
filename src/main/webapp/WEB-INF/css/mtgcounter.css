@@ -21,4 +21,5 @@ body {
 
 #changeHP {
     width: 30px;
+    border-radius: 15%;
 }
