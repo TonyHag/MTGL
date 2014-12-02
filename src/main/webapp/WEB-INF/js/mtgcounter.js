@@ -13,7 +13,6 @@ function Player(name) {
 
     ID++;
     this.id = ID;
-
 }
 
 Player.prototype.addHp = function(hp) {
