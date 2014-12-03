@@ -7,6 +7,7 @@ public class Player {
 
     private String username;
     private int hp;
+    private int poison;  //Vi trenger denne og :)
 
     public String getUsername() {
         return username;
@@ -23,4 +24,8 @@ public class Player {
     public void setHp(int hp) {
         this.hp = hp;
     }
+
+    public int getPoison () {return poison;}
+
+    public void setPoison(int poison) {this.poison = poison;}
 }
