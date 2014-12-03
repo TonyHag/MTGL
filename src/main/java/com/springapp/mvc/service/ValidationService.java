@@ -6,6 +6,7 @@ package com.springapp.mvc.service;
 public class ValidationService {
 
 
+
     public static boolean validateLogin(String username, String password) {
         boolean valid = false;
 
@@ -18,8 +19,16 @@ public class ValidationService {
     public static boolean validateUsername(String username) {
         boolean valid = true;
 
-        // Sjekk med regex
+        if(username == null){
+            valid = false;
+        }
 
+        if(username.length() < 3 || username.length() > 30) {
+            valid = false;
+        }
+
+
+        // Sjekk med regex
 
         // Sjekk med db
         if(!MockDB.isUsernameAvailable(username)) {
@@ -29,18 +38,37 @@ public class ValidationService {
     }
 
     public static boolean validatePassword(String password) {
+        boolean valid = true;
+
+        if(password == null) {
+            valid = false;
+        }
+
+        if(password.length() < 4 || password.length() > 30) {
+            valid = false;
+        }
+
 
         // Sjekk med regex
 
-        return true;
+        return valid;
     }
 
     public static boolean validateEmail(String email) {
+        boolean valid = true;
+
+        if(email == null) {
+            valid = false;
+        }
+
+        if(email.length() < 4 || email.length() > 30) {
+            valid = false;
+        }
+
 
         // Sjekk med regex
 
-        return true;
-
+        return valid;
     }
 
 }

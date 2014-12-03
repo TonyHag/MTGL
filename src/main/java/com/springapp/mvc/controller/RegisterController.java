@@ -2,10 +2,13 @@ package com.springapp.mvc.controller;
 
 import com.springapp.mvc.model.RegisterFormData;
 import com.springapp.mvc.model.User;
+import com.springapp.mvc.service.EncryptionService;
+import com.springapp.mvc.service.IdService;
 import com.springapp.mvc.service.MockDB;
 import com.springapp.mvc.service.ValidationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,10 +32,13 @@ public class RegisterController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String submitRegisterForm(ModelMap model, @ModelAttribute RegisterFormData data) {
+    public String submitRegisterForm(ModelMap model, @ModelAttribute RegisterFormData data, BindingResult result) {
         System.out.println("Registerform submitted");
 
-        String returnJsp = "register";
+        // Om input parametre har errors
+        if(result.hasErrors()) {
+            return "register";
+        }
 
         // RegisterFromData data blir laget automatisk siden attributtene i RegisterFormData har samme navn som i formen
         String username = data.getUsername();
@@ -48,64 +54,61 @@ public class RegisterController {
 
         // valider brukernavn
         if(ValidationService.validateUsername(username)) {
-            System.out.println("Username valid");
+            model.remove("usernameError");
+            model.addAttribute("validUsername", username);
         } else {
+            model.addAttribute("usernameError", "Invalid username");
             validInput = false;
         }
 
-        // Valider passord
-        if(ValidationService.validatePassword(password1) && password1.equals(password2)) {
-            System.out.println("Password valid");
+        // Valider passord1
+        if(ValidationService.validatePassword(password1)) {
+            model.remove("password1Error");
+
+            // Valider passord2, ikke vits å validere passord2 hvis passord1 ikke er valid
+            if(password1.equals(password2)) {
+                model.remove("password2Error");
+            } else {
+                model.addAttribute("password2Error", "Passwords must match");
+                validInput = false;
+            }
+
         } else {
+            model.addAttribute("password1Error", "Invalid password");
             validInput = false;
         }
+
 
         // Valider email
         if(ValidationService.validateEmail(email)) {
-            System.out.println("email valid");
+            model.remove("emailError");
+            model.addAttribute("validEmail", email);
         } else {
+            model.addAttribute("emailError", "Invalid email");
             validInput = false;
         }
 
         if(validInput) {
 
-            // krypter passord
+            // Krypter passord
+            String encryptedPassword = EncryptionService.encryptPassword(password1);
 
-            StringBuffer PasswordHexString = null;
-            try {
+            // Opprett ny bruker
+            User newUser = new User(username, encryptedPassword, email);
 
-                MessageDigest digest = MessageDigest.getInstance("SHA-256");
-                String salt = "hemmeligsalt";
+            // generer unik id
+            int id = IdService.getUserId();
+            newUser.setId(id);
 
-                byte[] hash = digest.digest((password1+salt).getBytes("UTF-8"));
+            // lagre i database
+            MockDB.addUser(newUser);
+            // returner til login
+            return "redirect:login";
 
-                // Konteverterer fra byte[] til hex-streng
-                PasswordHexString = new StringBuffer();
-                for (int i = 0; i < hash.length; i++) {
-                    String hex = Integer.toHexString(0xff & hash[i]);
-                    if(hex.length() == 1) PasswordHexString.append('0');
-                    PasswordHexString.append(hex);
-                }
-
-                // Opprett ny bruker
-                User newUser = new User(username, password1, email);
-
-                // generer unik id
-                int id = 0;
-                newUser.setId(id);
-
-                // lagre i database
-                MockDB.addUser(newUser);
-                // returner til login
-                returnJsp = "redirect:login";
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
 
         }
 
-        return returnJsp;
+        return "register";
     }
 
 

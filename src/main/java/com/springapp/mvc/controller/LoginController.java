@@ -1,6 +1,7 @@
 package com.springapp.mvc.controller;
 
 import com.javafx.tools.doclets.formats.html.SourceToHTMLConverter;
+import com.springapp.mvc.service.EncryptionService;
 import com.springapp.mvc.service.ValidationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,7 +32,7 @@ public class LoginController {
         System.out.println("Login form submitted");
         String returnJsp = "login";
 
-        if(ValidationService.validateLogin(username, password)) {
+        if(ValidationService.validateLogin(username, EncryptionService.encryptPassword(password))){
             System.out.println("LoginController: Login success!");
 
             // Opprett ny session id + andre ting som må gjøres ved login

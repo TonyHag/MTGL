@@ -3,6 +3,7 @@ package com.springapp.mvc.controller;
 import com.springapp.mvc.model.Game;
 import com.springapp.mvc.model.Player;
 import com.springapp.mvc.service.CookieService;
+import com.springapp.mvc.service.IdService;
 import com.springapp.mvc.service.MockDB;
 import com.springapp.mvc.service.ValidationService;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ public class LobbyController {
 
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String getLoginForm(ModelMap model, HttpServletRequest request) {
+    public String getLobbyPage(ModelMap model, HttpServletRequest request) {
         System.out.println("Getting lobby page");
         gameCreator = CookieService.getLoggedInUser(request);
         if(gameCreator != null) {
@@ -76,7 +77,7 @@ public class LobbyController {
             players.add(p);
         }
 
-        int gameId = 0;
+        int gameId = IdService.getGameId();
         game.setPlayers(players);
         game.setId(gameId);
         MockDB.addGame(game);

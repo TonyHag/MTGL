@@ -1,5 +1,7 @@
 package com.springapp.mvc.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -10,17 +12,12 @@ import javax.validation.constraints.NotNull;
 public class RegisterFormData {
 
 
-    // Annotasjoner for validering av input
-    @NotNull
     private String username;
 
-    @NotNull
     private String password1;
 
-    @NotNull
     private String password2;
 
-    @NotNull
     private String email;
 
 

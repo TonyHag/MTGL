@@ -1,6 +1,7 @@
 package com.springapp.mvc.controller;
 
 import com.springapp.mvc.model.User;
+import com.springapp.mvc.service.EncryptionService;
 import com.springapp.mvc.service.MockDB;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,9 +21,11 @@ public class HelloController {
 		model.addAttribute("message", "Some users added");
 
         MockDB.users = new ArrayList<User>();
-        MockDB.addUser(new User("Tony", "asdf", "asdf"));
-        MockDB.addUser(new User("Jonas", "asdf", "asdf"));
-        MockDB.addUser(new User("Håkon", "asdf", "asdf"));
+        MockDB.addUser(new User("Tony", EncryptionService.encryptPassword("asdf"), "asdf"));
+        MockDB.addUser(new User("Jonas", EncryptionService.encryptPassword("asdf"), "asdf"));
+        MockDB.addUser(new User("Håkon", EncryptionService.encryptPassword("asdf"), "asdf"));
+        MockDB.addUser(new User("Eirik", EncryptionService.encryptPassword("asdf"), "asdf"));
+
 
         System.out.println("HelloPage");
 
