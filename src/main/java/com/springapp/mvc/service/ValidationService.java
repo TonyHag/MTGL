@@ -6,6 +6,15 @@ package com.springapp.mvc.service;
 public class ValidationService {
 
 
+    public static boolean validateLogin(String username, String password) {
+        boolean valid = false;
+
+        if(MockDB.isUser(username) && MockDB.passwordMatch(username, password)) {
+            valid = true;
+        }
+        return valid;
+    }
+
     public static boolean validateUsername(String username) {
         boolean valid = true;
 

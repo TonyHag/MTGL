@@ -40,7 +40,11 @@ public class RegisterController {
         String password2 = data.getPassword2();
         String email = data.getEmail();
 
-        boolean validInput = false;
+        System.out.println("Entered:" );
+        System.out.println("Username: " + username);
+        System.out.println("Password: " + password1 + ", " + password2);
+        System.out.println("email: " + email);
+        boolean validInput = true;
 
         // valider brukernavn
         if(ValidationService.validateUsername(username)) {
@@ -93,7 +97,7 @@ public class RegisterController {
                 // lagre i database
                 MockDB.addUser(newUser);
                 // returner til login
-                returnJsp = "login";
+                returnJsp = "redirect:login";
 
             } catch (Exception e) {
                 e.printStackTrace();
