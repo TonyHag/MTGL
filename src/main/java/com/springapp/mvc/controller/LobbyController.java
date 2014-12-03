@@ -1,5 +1,7 @@
 package com.springapp.mvc.controller;
 
+import com.springapp.mvc.model.Game;
+import com.springapp.mvc.model.Player;
 import com.springapp.mvc.service.CookieService;
 import com.springapp.mvc.service.MockDB;
 import com.springapp.mvc.service.ValidationService;
@@ -19,16 +21,20 @@ import java.util.ArrayList;
 @RequestMapping("/lobby")
 public class LobbyController {
 
-    ArrayList<String> invitedPlayers = new ArrayList<String>();
+    ArrayList<String> invitedPlayerNames = new ArrayList<String>();
+    ArrayList<Player> players = new ArrayList<Player>();
+    String gameCreator = null;
+
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String getLoginForm(ModelMap model, HttpServletRequest request) {
         System.out.println("Getting lobby page");
-        String user = CookieService.getLoggedInUser(request);
-        if(user != null) {
-            model.addAttribute("user", user);
+        gameCreator = CookieService.getLoggedInUser(request);
+        if(gameCreator != null) {
 
-            //model.addAttribute("invitedPlayers", invitedPlayers);
+            model.addAttribute("gameCreator", gameCreator);
+
+            model.addAttribute("invitedPlayers", invitedPlayerNames);
 
             return "lobby";
         }
@@ -41,7 +47,7 @@ public class LobbyController {
 
             System.out.println("LobbyController: User found, adding to invited players");
 
-            invitedPlayers.add(invitePlayer);
+            invitedPlayerNames.add(invitePlayer);
 
             return "redirect:main";
         }
@@ -54,11 +60,28 @@ public class LobbyController {
     @RequestMapping(value ="/startGame", method = RequestMethod.GET)
     public String startGame(ModelMap model) {
 
-       // Opprett nytt game
 
-       // Gå til GameController med game id
+        // Opprett nytt game
+        Game game = new Game();
 
-       return "redirect:main";
+        Player host = new Player();
+        host.setUsername(gameCreator);
+        host.setHp(20);
+        players.add(host);
+
+        for(String username : invitedPlayerNames) {
+            Player p = new Player();
+            p.setHp(20);
+            p.setUsername(username);
+            players.add(p);
+        }
+
+        int gameId = 0;
+        game.setPlayers(players);
+        game.setId(gameId);
+        MockDB.addGame(game);
+
+        return ("redirect:/game/" + gameId);
     }
 
 }

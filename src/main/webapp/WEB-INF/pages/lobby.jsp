@@ -26,7 +26,8 @@
 <br>
 
 <table>
-    <tr><th>Invited players</th></tr>
+    <tr><th>Players in lobby</th></tr>
+    <tr><td>${gameCreator}</td> <td>host</td></tr>
     <c:forEach items="${invitedPlayers}" var="invitedPlayer">
         <tr><td> ${invitedPlayer} </td></tr>
     </c:forEach>
@@ -34,7 +35,7 @@
 
 <br>
 
-<a href="/lobby/start"><button>Start Game</button></a>
+<a href="/lobby/startGame"><button>Start Game</button></a>
 
 </body>
 </html>

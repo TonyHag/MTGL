@@ -1,5 +1,6 @@
 package com.springapp.mvc.service;
 
+import com.springapp.mvc.model.Game;
 import com.springapp.mvc.model.User;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 public class MockDB {
 
     public static ArrayList<User> users = new ArrayList<User>();
+    public static ArrayList<Game> games = new ArrayList<Game>();
 
     // Sjekker om et brukernavn eksisterer
     public static boolean isUser (String username){
@@ -62,4 +64,18 @@ public class MockDB {
 
         return available;
     }
+
+    public static void addGame(Game game) {
+        games.add(game);
+    }
+
+    public static Game getGame(int id) {
+        for(Game g : games) {
+            if(g.getId() == id) {
+                return g;
+            }
+        }
+        return null;
+    }
+
 }
