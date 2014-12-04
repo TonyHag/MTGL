@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad746ac4-f4a1-4892-becf-209ae77d8a3f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_3_2_3_RELEASE.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/springapp/mvc/controller/LobbyController.java" afterPath="$PROJECT_DIR$/src/main/java/com/springapp/mvc/controller/LobbyController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/springapp/mvc/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/springapp/mvc/controller/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MTGL.iml" afterPath="$PROJECT_DIR$/MTGL.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/MTGL_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/MTGL_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/lobby.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/lobby.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MTGL.iws" />
@@ -38,8 +30,8 @@
       <file leaf-file-name="LoginController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/springapp/mvc/controller/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19736843" vertical-offset="0" max-vertical-offset="690">
-              <caret line="21" column="7" selection-start-line="21" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.2631579" vertical-offset="0" max-vertical-offset="690">
+              <caret line="24" column="194" selection-start-line="24" selection-start-column="65" selection-end-line="24" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -91,8 +83,8 @@
       <file leaf-file-name="workspace.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.230769" vertical-offset="17790" max-vertical-offset="19530">
-              <caret line="1202" column="19" selection-start-line="1202" selection-start-column="19" selection-end-line="1202" selection-end-column="19" />
+            <state vertical-scroll-proportion="-9.230769" vertical-offset="17730" max-vertical-offset="19470">
+              <caret line="1198" column="19" selection-start-line="1198" selection-start-column="19" selection-end-line="1198" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -155,8 +147,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/lobby.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/springapp/mvc/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/springapp/mvc/controller/HelloController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springapp/mvc/controller/LoginController.java" />
       </list>
     </option>
   </component>
@@ -746,7 +738,7 @@
       <workItem from="1417598947845" duration="4300000" />
       <workItem from="1417644149115" duration="4373000" />
       <workItem from="1417655084819" duration="1863000" />
-      <workItem from="1417699909476" duration="3174000" />
+      <workItem from="1417699909476" duration="3261000" />
     </task>
     <task id="LOCAL-00001" summary="Laget brukermodell&#10;Laget controller og view for registrering">
       <created>1417545820412</created>
@@ -768,11 +760,15 @@
       <created>1417644338975</created>
       <updated>1417644338975</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Lagt til feilmeldinger i lobby">
+      <created>1417703123459</created>
+      <updated>1417703123459</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27590000" />
+    <option name="totallyTimeSpent" value="27677000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -853,7 +849,8 @@
     <MESSAGE value="lagt til db og litt til" />
     <MESSAGE value="addhp fix" />
     <MESSAGE value="Lagt til posioncounter som en variabel i player-classen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lagt til posioncounter som en variabel i player-classen" />
+    <MESSAGE value="Lagt til feilmeldinger i lobby" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lagt til feilmeldinger i lobby" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1233,8 +1230,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.230769" vertical-offset="17790" max-vertical-offset="19530">
-          <caret line="1202" column="19" selection-start-line="1202" selection-start-column="19" selection-end-line="1202" selection-end-column="19" />
+        <state vertical-scroll-proportion="-9.230769" vertical-offset="17730" max-vertical-offset="19470">
+          <caret line="1198" column="19" selection-start-line="1198" selection-start-column="19" selection-end-line="1198" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -1284,8 +1281,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/springapp/mvc/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19736843" vertical-offset="0" max-vertical-offset="690">
-          <caret line="21" column="7" selection-start-line="21" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2631579" vertical-offset="0" max-vertical-offset="690">
+          <caret line="24" column="194" selection-start-line="24" selection-start-column="65" selection-end-line="24" selection-end-column="65" />
           <folding />
         </state>
       </provider>
