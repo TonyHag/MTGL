@@ -34,7 +34,7 @@ var appendPlayer = function(newPlayer) {
 
     // Legg til UI
     $("#row" + rowNum).append('<div class="col-xs-6 playerInfo"> <div class="row"> <div class="col-xs-12"><p class="playerName">'+ newPlayer.name +'</p></div</div><div class="row"<div class="col-xs-12" ><p class="playerHp" id="hp' + newPlayer.id + '">' + newPlayer.hp + '</p></div></div> ' +
-        '<div class="row"> <div class="col-xs-12 text-center"><button class="btn-danger btn-sm subtractHp'+ newPlayer.id +'">-</button> <input type="text" id="changeHP" placeholder="1" value="1"/> <button class="btn-success btn-sm addHp'+ newPlayer.id +'">+</button></div></div> </div>');
+        '<div class="row"> <div class="col-xs-12 text-center"><button class="btn btn-sm btn-primary" id="btn_turn">Turn</button><button class="btn-danger btn-sm subtractHp'+ newPlayer.id +'">-</button> <input type="text" id="changeHP" placeholder="1" value="1"/> <button class="btn-success btn-sm addHp'+ newPlayer.id +'">+</button><button class="btn btn-sm btn-success" id="btn_winner">Declare Winner</button></div></div> </div>');
 
     // Oppdatering av hp
     var updateHp = function() {
@@ -47,7 +47,7 @@ var appendPlayer = function(newPlayer) {
         players[newPlayer.id].removeHp($("#changeHP").val());
         updateHp();
     });
-    // This is SPARTA
+
     $("button.addHp" + newPlayer.id).click(function() {
         var addValue = parseInt($("#changeHP").val());
         players[newPlayer.id].addHp(addValue);
