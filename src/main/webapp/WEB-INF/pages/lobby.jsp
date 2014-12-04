@@ -19,7 +19,7 @@
 
 <form action="/lobby/invite" method="post">
     <table>
-        <tr><td><input type ="text" name="invitePlayer" /></td> <td> <input type="submit" value="Invite"></td></tr>
+        <tr><td><input type ="text" name="invitePlayer" /></td> <td> <input type="submit" value="Invite"></td> <td>${invitePlayerError}</td></tr>
     </table>
 </form>
 

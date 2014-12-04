@@ -25,64 +25,96 @@ public class LobbyController {
     ArrayList<String> invitedPlayerNames = new ArrayList<String>();
     ArrayList<Player> players = new ArrayList<Player>();
     String gameCreator = null;
-
+    String invitePlayerError;
+    boolean initialVisit = true;
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String getLobbyPage(ModelMap model, HttpServletRequest request) {
         System.out.println("Getting lobby page");
-        gameCreator = CookieService.getLoggedInUser(request);
-        if(gameCreator != null) {
 
-            model.addAttribute("gameCreator", gameCreator);
+        if(true) { // hvis logget inn
 
+            if(initialVisit) {
+                gameCreator = CookieService.getLoggedInUser(request);
+                model.addAttribute("gameCreator", gameCreator);
+            }
+
+            model.addAttribute("invitePlayerError", invitePlayerError);
             model.addAttribute("invitedPlayers", invitedPlayerNames);
 
             return "lobby";
         }
+
         return "redirect:login";
+
     }
 
     @RequestMapping(value = "/invite", method = RequestMethod.POST)
     public String invitePlayer(ModelMap model, @RequestParam(value="invitePlayer") String invitePlayer) {
-        if(MockDB.isUser(invitePlayer)) {
 
-            System.out.println("LobbyController: User found, adding to invited players");
+        if(true) { // hvis logget inn
 
-            invitedPlayerNames.add(invitePlayer);
+            // Sjekk at man ikke inviterer seg selv
+            if(gameCreator != null && gameCreator.equals(invitePlayer)) {
+                invitePlayerError = "Invite a friend!";
+                return "redirect:main";
+            }
 
-            return "redirect:main";
+            // Sjekk at man ikke inviterer samme flere ganger
+            for(String name : invitedPlayerNames) {
+                if(name.equals(invitePlayer)) {
+                    invitePlayerError = "Player already invited";
+                    return "redirect:main";
+                }
+            }
+
+            // Sjekk at spiller eksisterer
+            if(MockDB.isUser(invitePlayer)) {
+
+                invitePlayerError = "";
+                invitedPlayerNames.add(invitePlayer);
+                return "redirect:main";
+
+            } else {
+
+                invitePlayerError = "Player not found";
+                return "redirect:main";
+
+            }
         }
 
-        System.out.println("LobbyController: User not found");
-
-        return "redirect:main";
+        return "redirect:login";
     }
 
     @RequestMapping(value ="/startGame", method = RequestMethod.GET)
     public String startGame(ModelMap model) {
 
+        if(true) { // hvis logget inn
+            // Opprett nytt game
+            Game game = new Game();
 
-        // Opprett nytt game
-        Game game = new Game();
+            Player host = new Player();
+            host.setUsername(gameCreator);
+            host.setHp(20);
+            players.add(host);
 
-        Player host = new Player();
-        host.setUsername(gameCreator);
-        host.setHp(20);
-        players.add(host);
+            for(String username : invitedPlayerNames) {
+                Player p = new Player();
+                p.setHp(20);
+                p.setUsername(username);
+                players.add(p);
+            }
 
-        for(String username : invitedPlayerNames) {
-            Player p = new Player();
-            p.setHp(20);
-            p.setUsername(username);
-            players.add(p);
+            int gameId = IdService.getGameId();
+            game.setPlayers(players);
+            game.setId(gameId);
+            MockDB.addGame(game);
+
+            return ("redirect:/game/" + gameId);
         }
 
-        int gameId = IdService.getGameId();
-        game.setPlayers(players);
-        game.setId(gameId);
-        MockDB.addGame(game);
+        return "redirect:login";
 
-        return ("redirect:/game/" + gameId);
     }
 
 }
